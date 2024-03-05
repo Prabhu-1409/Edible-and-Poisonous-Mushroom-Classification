@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Application</title>
+    <link rel="stylesheet" href="/static/css/login.css">
+</head>
+<body>
+    <div class="box">
+        <span class="text-center">Sign In</span>
+        <form action="/login" method="post">
+            <div class="input-container">
+            <input type="text" name="email" placeholder="Enter your Email"/>
+            </div>
+            <div class="input-container">
+            <input type="password" name="password" placeholder="Enter your password"/>
+            </div>
+            <input class="button" type="submit" name="Log In">
+            <p>Need a account?<a href="{{ url_for('register') }}">Signp here</a></p>
+            <p>{{ mes }}</p>
+            </div>
+        </form>
+        </div>
+    </div>
+    
+</div>
+</body>
+</html>

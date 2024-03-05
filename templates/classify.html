@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/classify.css">
+</head>
+<body>
+  <a href="{{ url_for('feature') }}">Features</a>
+  <a href="{{ url_for('image')}}">Image based Classification</a>
+    <div class="box">
+        <form action="/classify" method="post">
+        <div class="sample">
+        <table class="table" style="border-width: 0px;">
+            <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+            <tr style="text-align: center; border-width: 0px; border: 0px;"><td>
+            <label>Capshape</label><select class="item" name="capshape">
+              <option>Select an Option</option>
+              <option value="1">conical</option>
+              <option value="5">convex</option>
+              <option value="2">flat</option>
+              <option value="0">bell</option>
+              <option value="4">sunken</option>
+              <option value="3">knobbed</option>
+            </select></td>
+             <td><label>Capsurface</label>
+            <select class="item" name="capsurface">
+              <option>Select an Option</option>
+              <option value="1">Grooves</option>
+              <option value="3">Scaly</option>
+              <option value="2">Smooth</option>
+              <option value="0">Fibrous</option>
+            </select></td></tr>
+            <tr style="text-align: center; border-width: 0px;"><td><label>Cap Color</label>
+            <select class="item" name="capcolor">
+              <option>Select an Option</option>
+              <option value="0">Buff</option>
+              <option value="1">Cinnamon</option>
+              <option value="3">Grey</option>
+              <option value="6">Green</option>
+              <option value="4">Brown</option>
+              <option value="7">Purple</option>
+              <option value="2">Red</option>
+              <option value="8">White</option>
+              <option value="9">Yellow</option>
+              <option value="5">Pink</option>
+            </select></td>
+            <td><label>Gill Attachment</label>
+            <select class="item" name="gillattachment">
+              <option>Select an Option</option>
+              <option value="1">Descending</option>
+              <option value="2">Free</option>
+              <option value="3">Notched</option>
+              <option value="0">Attached</option>
+            </select></td></tr>
+            <tr style="text-align: center;"><td><label>Gill Spacing</label>
+            <select class="item" name="gillspacing">
+              <option>Select an Option</option>
+              <option value="2">Crowded</option>
+              <option value="1">Distant</option>
+              <option value="0">Close</option>
+            </select></td>
+            <td><div className='gill-size'>
+            <label>Gill Size</label>
+            <select class="item" name="gillsize">
+              <option>Select an Option</option>
+              <option value="1">Narrow</option>
+              <option value="0">Broad</option>
+            </select></td></tr>
+            <tr style="text-align: center;"><td><label>Gill Color</label>
+            <select class="item" name="gillcolor">
+              <option>Select an Option</option>
+              <option value="5">Brown</option>
+              <option value="0">Buff</option>
+              <option value="3">Chocolate</option>
+              <option value="2">Grey</option>
+              <option value="4">Black</option>
+              <option value="6">Orange</option>
+              <option value="7">Pink</option>
+              <option value="9">Purple</option>
+              <option value="1">Red</option>
+              <option value="8">Green</option>
+              <option value="11">Yellow</option>
+              <option value="10">White</option>
+            </select></td>
+            <td><label>Stalk Shape</label>
+            <select class="item" name="stalkshape">
+              <option>Select an Option</option>
+              <option value="1">Tapering</option>
+              <option value="0">Enlarging</option>
+            </select></td></tr>
+            <tr style="text-align: center;"><td><label>Stalk Root</label>
+            <select class="item" name="stalkroot">
+              <option>Select an Option</option>
+              <option value="2">Club</option>
+              <option value="1">Cup</option>
+              <option value="3">Equal</option>
+              <option value="1">Bulbous</option>
+              <option value="5">Rhizomorphs</option>
+              <option value="4">Rooted</option>
+              <option value="0">Missing</option>
+            </select></td>
+            <td><label>Stalk Surface Above Ring</label>
+            <select class="item" name="stalksurfaceabovering">
+              <option>Select an Option</option>
+              <option value="3">Scaly</option>
+              <option value="1">Silky</option>
+              <option value="2">Smooth</option>
+              <option value="0">Fibrous</option>
+            </select></td></tr>
+            <tr style="text-align: center;"><td><label>Stalk Surface Below Ring</label>
+            <select class="item" name="stalksurfacebelowring">
+              <option>Select an Option</option>
+              <option value="3">Scaly</option>
+              <option value="1">Silky</option>
+              <option value="2">Smooth</option>
+              <option value="0">Fibrous</option>
+            </select></td>
+            <td><label>Stalk Color Above Ring</label>
+            <select class="item" name="stalkcolorabovering">
+              <option>Select an Option</option>
+              <option value="0">Buff</option>
+              <option value="1">Cinnamon</option>
+              <option value="3">Grey</option>
+              <option value="5">Orange</option>
+              <option value="4">Brown</option>
+              <option value="2">Red</option>
+              <option value="7">White</option>
+              <option value="8">Yellow</option>
+              <option value="6">Pink</option>
+            </select></td></tr>
+            <tr style="text-align: center;"><td><label>Stalk Color Below Ring</label>
+            <select class="item" name="stalkcolorbelowring">
+              <option>Select an Option</option>
+              <option value="0">Buff</option>
+              <option value="1">Cinnamon</option>
+              <option value="3">Grey</option>
+              <option value="5">Orange</option>
+              <option value="4">Brown</option>
+              <option value="2">Red</option>
+              <option value="7">White</option>
+              <option value="8">Yellow</option>
+              <option value="6">Pink</option>
+            </select></td>
+            <td><label>Veil Type</label>
+            <select class="item" name="veiltype">
+              <option>Select an Option</option>
+              <option value="1">Universal</option>
+              <option value="0">Partial</option>
+            </select></td></tr>
+            <tr style="text-align: center;"><td><label>Veil Color</label>
+            <select class="item" name="veilcolor">
+              <option>Select an Option</option>
+              <option value="1">Orange</option>
+              <option value="2">White</option>
+              <option value="3">Yellow</option>
+              <option value="0">Brown</option>
+            </select></td>
+            <td><label>Ring Number</label>
+            <select class="item" name="ringnumber">
+              <option>Select an Option</option>
+              <option value="1">One</option>
+              <option value="1">Two</option>
+              <option value="0">None</option>
+            </select></td></tr>
+            <tr style="text-align: center;"><td><label>Ring Type</label>
+            <select class="item" name="ringtype">
+              <option>Select an Option</option>
+              <option value="1">Evanescent</option>
+              <option value="2">Flaring</option>
+              <option value="3">Large</option>
+              <option value="0">Cobwebby</option>
+              <option value="4">None</option>
+              <option value="5">Pendant</option>
+              <option value="6">Sheathing</option>
+              <option value="7">Zone</option>
+            </select></td>
+            <td><label>Spore print Color</label>
+            <select class="item" name="sporeprint">
+              <option>Select an Option</option>
+              <option value="3">Brown</option>
+              <option value="0">Buff</option>
+              <option value="1">Chocolate</option>
+              <option value="5">Green</option>
+              <option value="2">Black</option>
+              <option value="5">Purple</option>
+              <option value="6">White</option>
+              <option value="7">Yellow</option>
+              <option value="4">Orange</option>
+            </select></td></tr>
+            <tr style="text-align: center;"><td><label>Population</label>
+            <select class="item" name="population">
+              <option>Select an Option</option>
+              <option value="1">Clustered</option>
+              <option value="2">Numerous</option>
+              <option value="0">Abundant</option>
+              <option value="4">Several</option>
+              <option value="5">Solitary</option>
+              <option value="3">Scattered</option>
+            </select></td>
+            <td><label>Habitat</label>
+            <select class="item" name="habitat">
+              <option>Select an Option</option>
+              <option value="1">Grasses</option>
+              <option value="2">Leaves</option>
+              <option value="3">Meadows</option>
+              <option value="4">Paths</option>
+              <option value="5">Urban</option>
+              <option value="6">Waste</option>
+              <option value="0">Woods</option>
+            </select></td></tr>
+        </div>
+        <div class="align">
+        <input class="btn" type="submit">
+            <h1 style="margin-left: -45px; color: white;">{{ output }}</h1>
+        </div>
+        </table>
+        </div>
+          </form>  
+    </div>
+</body>
+</html>
